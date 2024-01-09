@@ -5,27 +5,15 @@ import { auth } from '@/auth'
 import { Button } from '@/components/ui/button'
 import { IconMessage, IconSeparator } from '@/components/ui/icons'
 import { UserMenu } from '@/components/user-menu'
-import { SidebarMobile } from './sidebar-mobile'
-import { SidebarToggle } from './sidebar-toggle'
-import { ChatHistory } from './chat-history'
 
 async function UserOrLogin() {
   const session = await auth()
   return (
     <>
-      {session?.user ? (
-        <>
-          <SidebarMobile>
-            <ChatHistory userId={session.user.id} />
-          </SidebarMobile>
-          <SidebarToggle />
-        </>
-      ) : (
-        <Link href="/" target="_blank" rel="nofollow">
-          <IconMessage className="w-6 h-6 mr-2 dark:hidden" />
-          <IconMessage className="hidden w-6 h-6 mr-2 dark:block" />
-        </Link>
-      )}
+      <Link href="/" target="_blank" rel="nofollow">
+        <IconMessage className="w-6 h-6 mr-2 dark:hidden" />
+        <IconMessage className="hidden w-6 h-6 mr-2 dark:block" />
+      </Link>
       <div className="flex items-center">
         <IconSeparator className="w-6 h-6 text-muted-foreground/50" />
         {session?.user ? (
