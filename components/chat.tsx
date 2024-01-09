@@ -5,7 +5,6 @@ import { useChat, type Message } from 'ai/react'
 import { cn } from '@/lib/utils'
 import { ChatList } from '@/components/chat-list'
 import { ChatPanel } from '@/components/chat-panel'
-import { EmptyScreen } from '@/components/empty-screen'
 import { ChatScrollAnchor } from '@/components/chat-scroll-anchor'
 import { useLocalStorage } from '@/lib/hooks/use-local-storage'
 import {
@@ -64,9 +63,7 @@ export function Chat({ id, initialMessages, className }: ChatProps) {
             <ChatList messages={messages} />
             <ChatScrollAnchor trackVisibility={isLoading} />
           </>
-        ) : (
-          <EmptyScreen setInput={setInput} />
-        )}
+        ) : null}
       </div>
       <ChatPanel
         id={id}
