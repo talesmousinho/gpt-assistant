@@ -5,6 +5,7 @@ import { auth } from '@/auth'
 import { Button } from '@/components/ui/button'
 import { IconMessage, IconSeparator } from '@/components/ui/icons'
 import { UserMenu } from '@/components/user-menu'
+import { ThemeToggle } from './theme-toggle'
 
 async function UserOrLogin() {
   const session = await auth()
@@ -36,7 +37,9 @@ export function Header() {
           <UserOrLogin />
         </React.Suspense>
       </div>
-      <div className="flex items-center justify-end space-x-2"></div>
+      <div className="flex items-center justify-end space-x-2">
+        <ThemeToggle />
+      </div>
     </header>
   )
 }
