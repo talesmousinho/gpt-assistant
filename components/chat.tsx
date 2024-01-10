@@ -1,22 +1,16 @@
 'use client'
 
-import { useChat, type Message } from 'ai/react'
+import { useChat } from 'ai/react'
 
 import { cn } from '@/lib/utils'
 import { ChatList } from '@/components/chat-list'
 import { ChatPanel } from '@/components/chat-panel'
 import { ChatScrollAnchor } from '@/components/chat-scroll-anchor'
 
-export interface ChatProps extends React.ComponentProps<'div'> {
-  initialMessages?: Message[]
-  id?: string
-}
+export interface ChatProps extends React.ComponentProps<'div'> {}
 
-export function Chat({ id, initialMessages, className }: ChatProps) {
-  const { messages, append, isLoading, input, setInput } = useChat({
-    initialMessages,
-    id
-  })
+export function Chat({ className }: ChatProps) {
+  const { messages, append, isLoading, input, setInput } = useChat()
   return (
     <>
       <div className={cn('pb-[200px] pt-4 md:pt-10', className)}>
@@ -27,7 +21,7 @@ export function Chat({ id, initialMessages, className }: ChatProps) {
           </>
         ) : null}
       </div>
-      <ChatPanel id={id} isLoading={isLoading} append={append} input={input} setInput={setInput} />
+      <ChatPanel isLoading={isLoading} append={append} input={input} setInput={setInput} />
     </>
   )
 }
